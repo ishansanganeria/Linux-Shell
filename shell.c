@@ -53,7 +53,7 @@ char* strcpyR(char *in, int u, int l)			//UPPER LIMIT'S INDEX ISNT INCLUDED AND 
 
 void printhistory()
 {
-	for (int i = 0; i < histcount; ++i)
+	for (int i = 0; i < histcount; ++i)			//here hiscount is dynamic this will store number of history features.
 		printf("%d\t\t%s", i+1, hist[i]);
 }
 
@@ -115,7 +115,7 @@ void execute(char* in,int len)					//INPUT  EG: "cat hello.c","ps -l","ls"
 		if(id == 0)
 		{
 			if(strcmp(in1,"history\0") == 0)
-				printhistory();
+				printhistory();					//this will print history features
 			else if(execlp(in1,in1,0) == -1)
 				printf("bash: %s: command not found\n",in1);
 		}
@@ -198,7 +198,7 @@ void execpr(char *a)
 				c[i][j] = '\0';
 
 	int id1 = fork();
-	if (id1 == 0)
+	if (id1 == 0)					//if pid is smaller than 0 fork fails
 	{
 		int pfd[2];
 		pipe(pfd);
